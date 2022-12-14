@@ -6,6 +6,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 import '../../helper/HelperFunction.dart';
 import '../../helper/NavigatorFunction.dart';
+import '../../model/ModelUser.dart';
 import '../main/ScreenMain.dart';
 
 class ScreenRegister extends StatefulWidget {

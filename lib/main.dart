@@ -32,7 +32,6 @@ class MyApp extends StatelessWidget {
 /// This MyHomePage class basically used to show splash screen
 /// in this class we simply check the used is logged or not if he logged in then we simply navigate him in inner page
 /// else we navigate him to the login screen
-
 class MyHomePage extends StatefulWidget {
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -57,8 +56,13 @@ class _MyHomePageState extends State<MyHomePage> {
               textStyle:
                   const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
             ),
-            widgetText("1). Please allow location permission"),
-            widgetText("2). Ensure your internet connection is start"),
+            widgetText("1) Please allow location permission"),
+            widgetText("2) Ensure your internet connection is start"),
+            widgetText(
+              "3) Because of this debug APK it will take some time to get OTP kindly please wait ",
+              textStyle:
+                  const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+            ),
             Container(
               margin: const EdgeInsets.only(left: 60, right: 60, top: 20),
               child: LinearProgressIndicator(

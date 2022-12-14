@@ -5,6 +5,8 @@ import 'package:flutter_firebase/repo/FirebaseClass.dart';
 import 'package:flutter_firebase/screens/auth/ScreenLogin.dart';
 import 'package:flutter_firebase/widgets/WidgetButton.dart';
 
+import '../../model/ModelUser.dart';
+
 // \ScreenMain this screen is used only for to show information of logged in user
 class ScreenMain extends StatefulWidget {
   @override
