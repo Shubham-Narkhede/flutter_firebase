@@ -20,14 +20,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter Firebase',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
       home: MyHomePage(),
     );
   }
 }
+
+/// This MyHomePage class basically used to show splash screen
+/// in this class we simply check the used is logged or not if he logged in then we simply navigate him in inner page
+/// else we navigate him to the login screen
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -35,14 +39,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Timer? timer;
-  int start = 5;
-
   @override
   void initState() {
     super.initState();
     navigatorFunction();
-    startTimer();
   }
 
   @override
@@ -59,17 +59,20 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             widgetText("1). Please allow location permission"),
             widgetText("2). Ensure your internet connection is start"),
-            widgetText(
-              "$start",
-              textStyle:
-                  const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-            )
+            Container(
+              margin: const EdgeInsets.only(left: 60, right: 60, top: 20),
+              child: LinearProgressIndicator(
+                color: Colors.green,
+                backgroundColor: Colors.green.shade200,
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 
+  /// here we have created one common text widget to use the text
   Widget widgetText(String title, {TextStyle? textStyle}) {
     return Container(
       margin: const EdgeInsets.only(top: 10, bottom: 10),
@@ -82,30 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void startTimer() {
-    const oneSec = Duration(seconds: 1);
-    timer = Timer.periodic(
-      oneSec,
-      (Timer timer) {
-        if (start == 0) {
-          setState(() {
-            timer.cancel();
-          });
-        } else {
-          setState(() {
-            start--;
-          });
-        }
-      },
-    );
-  }
-
-  @override
-  void dispose() {
-    timer!.cancel();
-    super.dispose();
-  }
-
+  /// this is navigator function which called after 5 second we have added delay to show splash screen
   navigatorFunction() {
     Future.delayed(const Duration(seconds: 5), () {
       if (FirebaseRepository.auth.currentUser == null) {
